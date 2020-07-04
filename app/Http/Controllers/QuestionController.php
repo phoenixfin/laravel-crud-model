@@ -26,4 +26,26 @@ class QuestionController extends Controller
         }
     }
 
+    public function show($id){
+       $question = QuestionModel::find_by_id($id);
+       $answers = QuestionModel::get_answers_by_id($id);
+       $QA = Array('Q'=>$question, 'A'=>$answers);
+       return view('question.show', compact('QA'));
+    }
+
+    public function edit($id) {
+       $question = QuestionModel::find_by_id($id);
+       return view('question.edit', compact('question'));
+    }
+
+    public function update($id, Request $request) {
+        $question = QuestionModel::update($id, $request->all());
+        return redirect('/question');
+    }
+
+    public function destroy($id) {
+        $deleted = QuestionModel::destroy($id);
+        return redirect('/question');
+    }
+
 }
