@@ -13,9 +13,25 @@ class AnswerController extends Controller
         return view('answer.index', compact('items'));
     }
 
+    public function index_by_question($id) {
+        $items = AnswerModel::get_by_question($id);
+        return view('answer.index', compact('items'));
+    }
+
     public function create() {
         $questions = QuestionModel::get_all();
         return view('answer.form', compact('questions'));
+    }
+
+    public function create_by_question($id) {
+        $question = QuestionModel::find_by_id($id);
+        if (is_null($question)) {
+            return view('answer.null');
+        } else {
+            $questions = Array($question);
+            return view('answer.form', compact('questions'));
+        }
+
     }
 
     public function post(Request $request) {

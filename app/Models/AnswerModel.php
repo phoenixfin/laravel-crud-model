@@ -13,6 +13,15 @@ class AnswerModel {
         return $answers;
     }
 
+    public static function get_by_question($id) {
+      $answers = DB::table('question')
+                   ->join('answer', 'question.id', '=', 'answer.question_id')
+                   ->select('answer.*','question.title')
+                   ->where('question.id','=',$id)
+                   ->get();
+      return $answers;
+    }
+
     public static function insert($data) {
         $new_answer = DB::table('answer')->insert($data);
         return $new_answer;

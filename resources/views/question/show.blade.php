@@ -7,12 +7,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Detail Pertanyaan</h1>
+              <h1>Question Details</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/question">Kembali</a></li>
-                <li class="breadcrumb-item active">Pertanyaan #{{ $QA['Q']->id }}</li>
+                <li class="breadcrumb-item"><a href="/question">Back</a></li>
+                <li class="breadcrumb-item active">Question #{{ $QA['Q']->id }}</li>
               </ol>
             </div>
           </div>
@@ -34,7 +34,7 @@
           <!-- /.card-body -->
 
           <div class="card-footer border-bottom">
-            <h5 class="card-subtitle">Jawaban</h5><br>
+            <h5 class="card-subtitle">Answers</h5><br>
             <ul class="list-group list-group-flush">
                 @foreach ($QA['A'] as $answer)
                     <li class="list-group-item">{{ $answer-> content }}</li>
